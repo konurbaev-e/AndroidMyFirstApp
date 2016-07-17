@@ -22,4 +22,14 @@ public class MyActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
+
+    public void viewList(View view){
+        Intent intent = new Intent(this, ListActivity.class);
+        startActivity(intent);
+//        Fragment fragment = new ItemFragment();
+//        FragmentTransaction ft = getFragmentManager().beginTransaction();
+//        ft.add(R.id.list, fragment);
+//        ft.commit();
+    }
+
 }

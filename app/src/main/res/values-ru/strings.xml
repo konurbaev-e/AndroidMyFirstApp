@@ -2,5 +2,6 @@
     <string name="app_name">Мое первое приложение</string>
     <string name="edit_message">Введите сообщение</string>
     <string name="button_send">Отправить</string>
+    <string name="button_view">Просмотреть</string>
     <string name="title_activity_display_message">Мое сообщение</string>
 </resources>
