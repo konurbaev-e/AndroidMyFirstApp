@@ -32,4 +32,9 @@ public class MyActivity extends AppCompatActivity {
 //        ft.commit();
     }
 
+    public void showArticles(View view) {
+        Intent intent = new Intent(this, NewsArticlesActivity.class);
+        startActivity(intent);
+    }
+
 }
