@@ -1,6 +1,8 @@
 package org.konurbaev.myfirstapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +15,10 @@ public class MyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        String message = sharedPref.getString(getString(R.string.edit_message_preference), null);
+        EditText editText = (EditText)findViewById(R.id.edit_message);
+        editText.setText(message);
     }
 
     public void sendMessage(View view){
@@ -23,13 +29,20 @@ public class MyActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EditText editText = (EditText)findViewById(R.id.edit_message);
+        String message = editText.getText().toString();
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(getString(R.string.edit_message_preference), message);
+        editor.commit();
+    }
+
     public void viewList(View view){
         Intent intent = new Intent(this, ListActivity.class);
         startActivity(intent);
-//        Fragment fragment = new ItemFragment();
-//        FragmentTransaction ft = getFragmentManager().beginTransaction();
-//        ft.add(R.id.list, fragment);
-//        ft.commit();
     }
 
     public void showArticles(View view) {
